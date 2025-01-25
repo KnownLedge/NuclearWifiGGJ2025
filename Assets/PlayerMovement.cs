@@ -44,10 +44,10 @@ public class PlayerMovement : MonoBehaviour
         // HORIZONTAL MOVEMENT
 
         rb.AddForce(Vector2.right * inpX * moveSpeed); //Add movespeed to player as a force
-        float xVelocity = rb.velocity.x; // Get horizontal velocity
+        float xVelocity = rb.linearVelocity.x; // Get horizontal velocity
         xVelocity = Mathf.Clamp(xVelocity, -maxSpeed, maxSpeed); //Limit horizontal velocity to max speed
 
-        rb.velocity = new Vector2(xVelocity, rb.velocity.y);  // Set velocity to use our new horizontal speed (if it wasn't limited this changes nothing)
+        rb.linearVelocity = new Vector2(xVelocity, rb.linearVelocity.y);  // Set velocity to use our new horizontal speed (if it wasn't limited this changes nothing)
         //Probably not the best way to go about this
 
         //JUMPING

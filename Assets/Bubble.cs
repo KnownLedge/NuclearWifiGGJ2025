@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     public float size = 1.0f;
-    float speed = 0.4f;
+    float speed = 0.2f;
     float directionY = 0.5f;
 
     void FixedUpdate()
@@ -16,5 +16,15 @@ public class Bubble : MonoBehaviour
         Vector3 position = transform.localPosition;
         position.y += speed * directionY;
         transform.localPosition = position;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        switch (other.gameObject.name)
+        {
+            case "Wall":
+                directionY = -directionY;
+                break;
+        }
     }
 }

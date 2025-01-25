@@ -36,11 +36,18 @@ public class Bubble : MonoBehaviour
         switch (other.gameObject.name)
         {
             case "Wall":
+                rb.linearVelocity = new Vector2(-rb.linearVelocityX * 2, rb.linearVelocityY);
+                break;
+
+            case "Roof":
                 directionY = -directionY;
                 break;
 
             case "Ground":
-         //       transform.position;
+                transform.position = spawnPoint;
+                rb.linearVelocity = new Vector2(0, 0);
+
+
                 break;
 
         }
@@ -49,7 +56,7 @@ public class Bubble : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Rigidbody2D>() != null) {
                 Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
-                rb.linearVelocity = new Vector2(otherRB.linearVelocityX, -directionY);
+                rb.linearVelocity = new Vector2(otherRB.linearVelocityX, 0);
             }
 
         }

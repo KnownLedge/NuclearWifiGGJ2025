@@ -6,7 +6,7 @@ using UnityEditor.Experimental.GraphView;
 public class GameController : MonoBehaviour
 {
     public GameObject[] players = new GameObject[3]; //4 Players max seems a good limit
-    public GameObject bubble; //Reference to bubble object
+  
 
     public int[] lives = new int[3]; // Integers for storing how many lives the players have left
 
@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     public TMP_Text[] LivesText = new TMP_Text[3];
 
     public Transform[] turnHeader = new Transform[3];
+
+    public Bubble bubble; //Reference to the bubble to perform functions, bubble also has a reference to this (thats makes them co dependant and is bad practice)
 
 
     void Start()
@@ -53,12 +55,19 @@ public class GameController : MonoBehaviour
         else
         {
             ChangeTurn(turn);
+           
             turnTimer = 0; //Reset timer
             turn += 1;
-            if(turn > playerCount - 1) // Reset turn to first player if on last player
+
+
+
+            if (turn > playerCount - 1) // Reset turn to first player if on last player
             {
                 turn = 0;
             }
+
+            bubble.SwitchBubble(turn);
+
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -92,6 +101,11 @@ public class GameController : MonoBehaviour
 
 
         box.localScale = new Vector3(1, 1);
+    }
+
+  public void BubbleHitFloor()
+    {
+        DecreaseLives(turn);
     }
 
 

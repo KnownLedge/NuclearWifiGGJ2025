@@ -10,12 +10,16 @@ public class Bubble : MonoBehaviour
 
     public Vector2 spawnPoint; //Where the bubble spawns
 
+    public SpriteRenderer spriteRenderer; //Reference to sprite component, we can use this to change the sprite in the code
 
     public Rigidbody2D rb; //Reference to Rigidbody
+
+    public Color[] colors = new Color[3]; //Colors for the bubble to swap to
 
     private void Start()
     {
         spawnPoint = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -30,6 +34,8 @@ public class Bubble : MonoBehaviour
         position.y += speed * directionY;
         transform.localPosition = position;
     }
+
+
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -46,7 +52,7 @@ public class Bubble : MonoBehaviour
             case "Ground":
                 transform.position = spawnPoint;
                 rb.linearVelocity = new Vector2(0, 0);
-
+                gameRef.BubbleHitFloor();
 
                 break;
 
@@ -62,6 +68,16 @@ public class Bubble : MonoBehaviour
         }
 
 
+    }
+
+    public void SwitchBubble(int turn)
+    {
+
+                spriteRenderer.color = colors[turn];
+
+
 
     }
+
+
 }

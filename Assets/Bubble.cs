@@ -3,8 +3,21 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     public float size = 1.0f;
-    float speed = 0.2f;
-    float directionY = 0.5f;
+   public  float speed = 0.2f;
+    public float directionY = 0.5f;
+
+    public GameController gameRef; // Reference to gamecontroller script for events like bubble popping
+
+    public Vector2 spawnPoint; //Where the bubble spawns
+
+
+    public Rigidbody2D rb; //Reference to Rigidbody
+
+    private void Start()
+    {
+        spawnPoint = transform.position;
+    }
+
 
     void FixedUpdate()
     {
@@ -25,6 +38,23 @@ public class Bubble : MonoBehaviour
             case "Wall":
                 directionY = -directionY;
                 break;
+
+            case "Ground":
+         //       transform.position;
+                break;
+
         }
+
+        if (other.gameObject.tag == "Player")
+        {
+            if (other.gameObject.GetComponent<Rigidbody2D>() != null) {
+                Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
+                rb.linearVelocity = new Vector2(otherRB.linearVelocityX, -directionY);
+            }
+
+        }
+
+
+
     }
 }

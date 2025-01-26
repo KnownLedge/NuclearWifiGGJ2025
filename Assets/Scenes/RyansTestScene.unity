@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -528,10 +529,14 @@ MonoBehaviour:
   moveSpeed: 80
   maxSpeed: 85
   jumpForce: 2500
+  horizontalAxis: Horizontal
+  jumpAxis: Jump
+  verticalAxis: Vertical
   inpX: 0
   inpY: 0
   grounded: 1
   rb: {fileID: 0}
+  playInput: {fileID: 0}
 --- !u!212 &238691017
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2492,9 +2497,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  bubble: {fileID: 238691015}
   lives: 03000000030000000300000003000000
   playerCount: 2
+  totalPlayers: -1
+  playerColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
   turn: 0
   turnTime: 15
   turnTimer: 0
@@ -2510,6 +2520,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  bubble: {fileID: 238691015}
 --- !u!1 &1497038165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,12 +2795,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36f61b62afaf3874b90b2fc80c35ab12, type: 3}
   m_Color: {r: 0.09359192, g: 0.90188676, b: 0.6312082, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 46.74858, y: 20.107765}
+  m_Size: {x: 2.85, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2804,8 +2815,8 @@ Transform:
   m_GameObject: {fileID: 1911532763}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.162, y: -0.0025, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 13, y: 14, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

@@ -5,12 +5,15 @@ using UnityEditor.Experimental.GraphView;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject[] players = new GameObject[3]; //4 Players max seems a good limit
+    public GameObject[] players = new GameObject[4]; //4 Players max seems a good limit
   
 
-    public int[] lives = new int[3]; // Integers for storing how many lives the players have left
+    public int[] lives = new int[4]; // Integers for storing how many lives the players have left
 
     public int playerCount = 2; //Total amount of players
+    public int totalPlayers = -1;
+
+    public Color[] playerColors = new Color[4];
 
     public int turn = 0; //Int to track what players turn it is to protect the bubble
 
@@ -19,11 +22,11 @@ public class GameController : MonoBehaviour
     public float turnTimer = 0; //Timer for tracking turns
 
     [Header("UI")] //References to the games ui so we can update it, going to address these in arrays cause I assume it would be faster
-    public GameObject[] uiGameObject = new GameObject[3];
+    public GameObject[] uiGameObject = new GameObject[4];
 
-    public TMP_Text[] LivesText = new TMP_Text[3];
+    public TMP_Text[] LivesText = new TMP_Text[4];
 
-    public Transform[] turnHeader = new Transform[3];
+    public Transform[] turnHeader = new Transform[4];
 
     public Bubble bubble; //Reference to the bubble to perform functions, bubble also has a reference to this (thats makes them co dependant and is bad practice)
 
@@ -138,5 +141,16 @@ public class GameController : MonoBehaviour
 
         //   LivesText[playerId].text = "LIVES: " + lives[playerId];
     }
+
+    public void ReceivePlayer(GameObject player)
+    {
+        totalPlayers += 1;
+        players[totalPlayers] = player;
+        SpriteRenderer spriteRender = player.GetComponent<SpriteRenderer>();
+        spriteRender.color = playerColors[totalPlayers];
+
+        spriteRender.sortingOrder = 6;
+    }
+
 
 }

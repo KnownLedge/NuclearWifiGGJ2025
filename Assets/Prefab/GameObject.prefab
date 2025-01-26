@@ -78,9 +78,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: -9136834448258697486, guid: 1f761d8ba4df83a448590a6fd690eac0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.0055321376, g: 0.018962944, b: 0.97735846, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6da5a885242eb3418c803533dbd0d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 0.5
+  speed: 0.3
+  directionY: 0.5
+  gameRef: {fileID: 0}
+  spawnPoint: {x: 0, y: 0}
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 1200096695941242947}
+  colors:
+  - {r: 0.04978988, g: 0.1068363, b: 0.97735846, a: 1}
+  - {r: 0.96981126, g: 0, b: 0, a: 1}
+  - {r: 0.07864004, g: 0.8867924, b: 0.09449767, a: 1}
+  - {r: 0.8862745, g: 0.8735706, b: 0.07843135, a: 1}
 --- !u!58 &3911906847275306788
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,14 +158,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8515257261445234153}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.75
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
